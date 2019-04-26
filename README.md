@@ -48,3 +48,15 @@ downside is that it requires a build step, and adds a fairly complex
 dependency. omni-rpc does not require a specific IDL. All parameters are simply
 encoded in the message format, which by default is JSON. Although use of and
 IDL for encoding messages is encouraged with omni-rpc, it is not required.
+
+## Web-first
+Most web APIs use HTTP, and most RPC systems are designed primarily for
+backend systems, microservices, etc. Althouth gRPC is working on a
+[browser-compatible version](https://github.com/improbable-eng/grpc-web), 
+gRPC was not designed to work this way (it's built for HTTP/2). grpc-web
+required a lot of complex machinery (relays, etc) to work last time I checked.
+
+omni-rpc is intended to be used in the browser, and implementators are
+encouraged to provide WebSockets compatibility with all implementations.
+I'm personally not a huge fan of using HTTP for everything, and omni-rpc and
+omnistreams in general were both designed to provide a simple alternative.
