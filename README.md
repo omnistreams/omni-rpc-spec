@@ -43,21 +43,21 @@ There are several excellent RPC systems in the wild, in particular
 
 
 ## No IDL
-Most RPC systems use an IDL such os
+Most RPC systems I've seen use an IDL such os
 [Protocol Buffers](https://developers.google.com/protocol-buffers/) to
 specify a strict interface between endpoints. This helps ensure proper use
 of endpoints, and also has the huge benefit of enabling code generation so
 you get function type signatures that match the IDL spec. The
 downside is that it requires a build step, and adds a fairly complex
 dependency. omni-rpc does not require a specific IDL. All parameters are simply
-encoded in the message format, which by default is JSON. Although use of and
+encoded in the message format, which by default is JSON. Although use of an
 IDL for encoding messages is encouraged with omni-rpc, it is not required.
 
 ## Web-first
 Most web APIs use HTTP, and most RPC systems are designed primarily for
 backend systems, microservices, etc. Althouth gRPC is working on a
 [browser-compatible version](https://github.com/improbable-eng/grpc-web), 
-gRPC was not designed to work this way (it's built for HTTP/2). grpc-web
+gRPC was not originally designed to work this way (it's built for HTTP/2). grpc-web
 required a lot of complex machinery (relays, etc) to work last time I checked.
 
 omni-rpc is intended to be used in the browser, and implementators are
