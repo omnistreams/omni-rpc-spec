@@ -29,6 +29,10 @@ The spec can basically be summarized as follows:
       Multiplexer.sendControlMessage for reponse.
    3. Stream param, stream response: Multiplexer.createConduit for request and
       response.
+      
+The peers are responsible for keeping track of the requests (for example
+using JSON-RPC request.id), and making sure the responses are matched
+up.
 
 # Differences from other RPC systems
 
