@@ -18,16 +18,16 @@ The spec can basically be summarized as follows:
 1. A peer opens an omnistreams mux listener.
 2. Another peer establishes a mux connection to the listener.
 3. Normal RPC requests (single parameter, single response) are handled using
-   omnistreams Multiplexer.sendControlMessage.
+   omnistreams Multiplexer.sendMessage.
 4. Streaming RPC requests (either stream parameter, stream response, or both)
-   are handled using Multiplexer.sendControlMessage and
-   Multiplexer.createConduit. There are 3 cases:
+   are handled using Multiplexer.sendMessage and
+   Multiplexer.openConduit. There are 3 cases:
 
-   1. Single param, stream response: Multiplexer.sendControlMessage for request,
-      Multiplexer.createConduit for response.
-   2. Stream param, single response: Multiplexer.createConduit for request,
-      Multiplexer.sendControlMessage for reponse.
-   3. Stream param, stream response: Multiplexer.createConduit for request and
+   1. Single param, stream response: Multiplexer.sendMessage for request,
+      Multiplexer.openConduit for response.
+   2. Stream param, single response: Multiplexer.openConduit for request,
+      Multiplexer.sendMessage for reponse.
+   3. Stream param, stream response: Multiplexer.openConduit for request and
       response.
       
 The peers are responsible for keeping track of the requests (for example
@@ -43,7 +43,7 @@ There are several excellent RPC systems in the wild, in particular
 
 
 ## No IDL
-Most RPC systems I've seen use an IDL such os
+Most RPC systems I've seen use an IDL such as
 [Protocol Buffers](https://developers.google.com/protocol-buffers/) to
 specify a strict interface between endpoints. This helps ensure proper use
 of endpoints, and also has the huge benefit of enabling code generation so
