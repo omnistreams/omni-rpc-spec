@@ -62,5 +62,3 @@ required a lot of complex machinery (relays, etc) to work last time I checked.
 
 omni-rpc is intended to be used in the browser, and implementators are
 encouraged to provide WebSockets compatibility with all implementations.
-I'm personally not a huge fan of using HTTP for everything, and omni-rpc and
-omnistreams in general were both designed to provide a simple alternative.
